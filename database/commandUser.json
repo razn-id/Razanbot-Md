@@ -30,7 +30,7 @@
     "db": [
       {
         "nama": "#enu",
-        "count": 95
+        "count": 98
       },
       {
         "nama": "#dashboard",
@@ -47,6 +47,10 @@
       {
         "nama": "#tmp3",
         "count": 11
+      },
+      {
+        "nama": "#tmp4",
+        "count": 1
       }
     ]
   },

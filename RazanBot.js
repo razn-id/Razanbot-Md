@@ -687,9 +687,10 @@ break
 case 'tqto': case 'partner': case 'credits': {
 	anu = `Terima kasih
 
+Allah SWT
+ALL Of Razan Dev Team
 Yahya Ganzz
-⌕ https://github.com/AzzBott679
-⌕ https://youtube.com/channel/UCmUhiytK9WMYaOFgdOho_2g
+Razan
 
 `
 	let btn = [{
@@ -1665,7 +1666,7 @@ case 'play': case 'ytplay': {
     razan.sendMessage(from, buttonMessage, { quoted: m })
 }
 break
-	case 'ytmp3': case 'ytaudio': {
+case 'ytmp3': case 'ytaudio': {
 	addCountCmd(`#${command.slice(1)}`, sender, _cmd)
 let { yta } = require('./lib/y2mate')
 if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`
@@ -1676,6 +1677,15 @@ razan.sendImage(from, media.thumb, `⌕ Title : ${media.title}\n⌕ File Size : 
 razan.sendMessage(from, { document: await getBuffer(media.dl_link), mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
 }
 break
+/**case 'youtubemp3': case 'ytaudio': case 'ytmp3': {
+  if (!url) throw `Example : ${prefix + command} title`
+     m.reply(mess.wait)
+     let ytmp3 = await fetchJson(`https://danzzapi.xyz/api/downloader/ytplaymp3?query=the shade&apikey=${setting.danzz}`)
+     let baper = await getBuffer(ytmp3.result.url)
+      razan.sendMessage(from, { audio: { url: baper },
+      mimetype: 'audio/mpeg'}, { quoted: m })
+  }
+break*/
 case 'ytmp4': case 'ytvideo': {
 addCountCmd(`#${command.slice(1)}`, sender, _cmd)
 let { ytv } = require('./lib/y2mate')
@@ -2150,14 +2160,17 @@ break
 
 //────────────────────[ DOWNLOADER ]────────────────────
 
-case 'tiktokaudio': case 'ttaudio': case 'tiktokmp3': {
-         	if (!url) throw `Example : ${prefix + command} [url]`
+case 'tiktokaudio': case 'ttaudio': case 'tiktokmp3': case 'ttmp3': {
+         	if (!url) throw `Example : ${prefix + command} url`
          	m.reply(mess.wait)
-             let sentolop = await fetchJson(`https://danzzapi.xyz/api/downloader/ttmp3?url=${url}&apikey=${setting.apikey}`)
-             razan.sendMessage(from, { audio: { url: sentolop.result.audio }, mimetype: 'audio/mpeg', fileName: `${url}.mp3` }, { quoted: m })
+             let ttmp3 = await fetchJson(`https://danzzapi.xyz/api/downloader/ttmp3?url=${url}&apikey=${setting.danzzkey}`)
+             razan.sendMessage(m.chat, { audio: { url: ttmp3.result.audio }, mimetype: 'audio/mpeg', fileName: `${url}.mp3` }, { quoted: m })
          	}
          break
-
+case 'bokep': {
+  m.reply("Astaghfirullah")
+}
+break
 case 'tiktok': case 'tiktokmp4': case 'tiktokvideo': case 'ttmp4': case 'tt': {
          	if (!url) throw `Example : ${prefix + command} [url]`
          	m.reply(mess.wait)
@@ -2770,7 +2783,7 @@ Hai kak ${pushname}, have a nice day :)
 │   ⟥  ${prefix}hapusvote
 │   
 ├─────  ⌈ *DOWNLOADER* ⌋
-│   ⟥  ${prefix}tiktokmp4[url]
+│   ⟥  ${prefix}tiktokmp4 [url]
 │   ⟥  ${prefix}tiktokmp3 [url]
 │   ⟥  ${prefix}instagram [url]
 │   ⟥  ${prefix}twittermp4 [url]
@@ -2980,11 +2993,11 @@ razan.sendMessage(from, { caption: `${anu}`, location: { jpegThumbnail: await re
 }
 break
 case 'p': case 'P': case 'bot': case 'Bot': {
-  razan.sendMessage(from, `Apa bro ? Kalau mau pake bot ketik ${prefix}menu || ${prefix}help || ${prefix}?. Kalau masih gabisa gausah pake bot ini.`)
+  m.reply("Apa bro ? Kalau mau pake bot ketik .menu || .help, Kalau masih gabisa gausah pake bot ini.")
 }
 break
 case 'Assalamualaikum': case 'assalamualaikum': {
-  razan.sendMessage(from, `Kalau mau pake bot ketik ${prefix}menu || ${prefix}help || ${prefix}?. Kalau masih gabisa gausah pake bot ini.`)
+  m.reply("Kalau mau pake bot ketik .menu || .help, Kalau masih gabisa gausah pake bot ini.")
 }
 break
 //────────────────────[ BATAS TEMAN ]────────────────────

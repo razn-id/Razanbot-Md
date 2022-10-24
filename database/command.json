@@ -1,7 +1,7 @@
 [
   {
     "nama": "#enu",
-    "count": 124
+    "count": 127
   },
   {
     "nama": "#dashboard",
@@ -18,5 +18,9 @@
   {
     "nama": "#tmp3",
     "count": 12
+  },
+  {
+    "nama": "#tmp4",
+    "count": 1
   }
 ]
