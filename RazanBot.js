@@ -122,7 +122,7 @@ module.exports = razan = async (razan, m, chatUpdate, store) => {
       .map((v) => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net")
       .includes(m.sender);
     const itsMe = m.sender == botNumber ? true : false;
-    const text = q = url = args.join(" ");
+    let text = q = url = args.join(" ");
     const sender = m.sender;
     const quoted = m.quoted ? m.quoted : m;
     const mime = (quoted.msg || quoted).mimetype || "";
