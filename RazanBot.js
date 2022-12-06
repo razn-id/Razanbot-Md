@@ -2920,7 +2920,7 @@ break*/
           //   );
           // }
 
-          let anu = fetchJson(
+          let anu = await fetchJson(
             `https://danzzapi.xyz/api/downloader/ytmp4?url=${text}&apikey=danzz`
           );
 
