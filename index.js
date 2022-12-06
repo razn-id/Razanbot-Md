@@ -14,6 +14,7 @@ const fs = require('fs');
 const yargs = require('yargs/yargs');
 const chalk = require('chalk');
 const FileType = require('file-type');
+const CFonts  = require('cfonts');
 const path = require('path');
 const _ = require('lodash');
 const PhoneNumber = require('awesome-phonenumber');
@@ -74,22 +75,33 @@ if (global.db) setInterval(async () => {
   }, 30 * 1000)
 
 console.clear()
-    console.log(color(figlet.textSync(`RazanBot-MD`, {
-        font: 'Standard',
-        horizontalLayout: 'default',
-        vertivalLayout: 'default',
-        width: 80,
-        whitespaceBreak: false
-    }), 'aqua'))
-    console.log(color('[ Created By Razanxxx ]'))
-    console.log(' ')
-    console.log('==============================================================')
-    console.log(color(`[•]`, 'aqua'), color(`Hai          : Owner`, 'yellow'))
-    console.log(color(`[•]`, 'aqua'), color(`Bot Version  : 1.0.0`, 'lime'))
-    console.log(color(`[•]`, 'aqua'), color(`Status       : Online!`, 'white'))
-    console.log(color(`[•]`, 'aqua'), color(`Owner        : Razanxx`, 'red'))
-    console.log(color(`[•]`, 'aqua'), color(`Devoloper    : @raznnaa_`, 'magenta'))
-    console.log('==============================================================')
+CFonts.say('Razan\nWhatsApp-Bot', {
+  font: 'chrome',
+  align: 'center',
+  gradient: ['red', 'magenta']
+})
+CFonts.say(`Razanbot-Md By @Razann`, {
+  font: 'console',
+  align: 'center',
+  gradient: ['red', 'magenta']
+})
+    // console.log(color(figlet.textSync(`RazanBot-MD`, {
+    //     font: 'Standard',
+    //     align: 'center',
+    //     horizontalLayout: 'default',
+    //     vertivalLayout: 'default',
+    //     width: 80,
+    //     whitespaceBreak: false
+    // }), 'aqua'))
+    // console.log(color('[ Created By Razanxxx ]'))
+    // console.log(' ')
+    // console.log('==============================================================')
+    // console.log(color(`[•]`, 'aqua'), color(`Hai          : Owner`, 'yellow'))
+    // console.log(color(`[•]`, 'aqua'), color(`Bot Version  : 1.0.0`, 'lime'))
+    // console.log(color(`[•]`, 'aqua'), color(`Status       : Online!`, 'white'))
+    // console.log(color(`[•]`, 'aqua'), color(`Owner        : Razanxx`, 'red'))
+    // console.log(color(`[•]`, 'aqua'), color(`Devoloper    : @raznnaa_`, 'magenta'))
+    // console.log('==============================================================')
     console.log(' ')
     console.log(RazanLog('Connect To WhatsApp Web'))
 async function startrazan() {
