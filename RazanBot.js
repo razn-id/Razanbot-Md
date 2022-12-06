@@ -49,6 +49,7 @@ const {
   parseMention,
   getRandom,
 } = require("./lib/myfunc");
+const { url } = require("inspector");
 global.prem = require("./lib/premium");
 
 //Apikey
@@ -2850,31 +2851,34 @@ ${vote[from][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join("\n")}
       case "ytaudio":
         {
           addCountCmd(`#${command.slice(1)}`, sender, _cmd);
-          let { yta } = require("./lib/y2mate");
-          if (!text)
-            throw `Example : ${
-              prefix + command
-            } https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`;
-          let quality = args[1] ? args[1] : "128kbps";
-          let media = await yta(text, quality);
-          if (media.filesize >= 100000)
-            return m.reply(
-              `File Melebihi Batas\n\n⌕ Title : ${media.title}\n⌕ File Size : ${media.filesizeF}`
-            );
-          razan.sendImage(
-            from,
-            media.thumb,
-            `⌕ Title : ${media.title}\n⌕ File Size : ${
-              media.filesizeF
-            }\n⌕ Url : ${isUrl(text)}\n⌕ Ext : MP3\n⌕ Resolusi : ${
-              args[1] || "128kbps"
-            }`,
-            m
+          //   let { yta } = require("./lib/y2mate");
+          //   if (!text)
+          //     throw `Example : ${
+          //       prefix + command
+          //     } https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`;
+          //   let quality = args[1] ? args[1] : "128kbps";
+          //   let media = await yta(text, quality);
+          //   if (media.filesize >= 100000)
+          //     return m.reply(
+          //       `File Melebihi Batas\n\n⌕ Title : ${media.title}\n⌕ File Size : ${media.filesizeF}`
+          //     );
+          //   razan.sendImage(
+          //     from,
+          //     media.thumb,
+          //     `⌕ Title : ${media.title}\n⌕ File Size : ${
+          //       media.filesizeF
+          //     }\n⌕ Url : ${isUrl(text)}\n⌕ Ext : MP3\n⌕ Resolusi : ${
+          //       args[1] || "128kbps"
+          //     }`,
+          //     m
+          //   );
+          let anu = await fetchJson(
+            `https://danzzapi.xyz/api/downloader/ytplaymp3?query=${url}&apikey=danzzprem`
           );
           razan.sendMessage(
             from,
             {
-              document: await getBuffer(media.dl_link),
+              document: await getBuffer(anu.result.url),
               mimetype: "audio/mpeg",
               fileName: `${media.title}.mp3`,
             },
@@ -2923,12 +2927,16 @@ break*/
           let anu = await fetchJson(
             `https://danzzapi.xyz/api/downloader/ytmp4?url=${text}&apikey=danzz`
           );
-
-          razan.sendMessage(from, {
-            video: { url: anu.result.url },
-            mimetype: "video/mp4",
-            fileName: `${anu.result.title}.mp4`,
-          });
+          m.reply(mess.wait);
+          razan.sendMessage(
+            from,
+            {
+              video: { url: anu.result.url },
+              mimetype: "video/mp4",
+              fileName: `${anu.result.title}.mp4`,
+            },
+            { quoted: m }
+          );
         }
         break;
       case "getmusic":
