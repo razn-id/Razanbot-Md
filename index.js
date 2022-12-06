@@ -1,5 +1,6 @@
 /**
-   * Original razan-Morou Dika Ardnt.
+   * Original Dika Ardnt.
+   * Recode By Razan.
    * This Script Recode From : https://github.com/AzzBott679/SC10
 */
 
@@ -14,11 +15,12 @@ const fs = require('fs');
 const yargs = require('yargs/yargs');
 const chalk = require('chalk');
 const FileType = require('file-type');
-const CFonts  = require('cfonts');
 const path = require('path');
 const _ = require('lodash');
 const PhoneNumber = require('awesome-phonenumber');
-const logger = pino();
+const CFonts  = require('cfonts')
+let logger = pino();
+let package = require('./package.json')
 
 // Library 
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
@@ -108,9 +110,9 @@ async function startrazan() {
     const razan = razanConnect({
         logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
-        browser: ['RazanBot•MD','Safari','1.0.0'],
+        browser: ['Razanbot - MD','Chrome','3.0.0'],
         auth: state,
-        qrTimeout: 120000
+        qrTimeout: 60000
     })
 
     store.bind(razan.ev)
@@ -199,7 +201,7 @@ razan.ev.on('messages.upsert', async chatUpdate => {
                 }
 
                 if (anu.action == 'add') {
-                    razan.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num], caption: `Selamat Datang Di ${metadata.subject} @${num.split("@")[0]} Jangan Lupa Baca Desk` })
+                    razan.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num], caption: `Hai Kak👋 @${num.split("@")[0]}\nSelamat Datang Di ${metadata.subject}\nJangan Lupa Baca Deskripsi yaa!` })
                 } else if (anu.action == 'remove') {
                     razan.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num], caption: `@${num.split("@")[0]} Keluar Dari ${metadata.subject}` })
                 } else if (anu.action == 'promote') {
@@ -282,7 +284,7 @@ razan.ev.on('messages.upsert', async chatUpdate => {
     razan.ev.on('connection.update', async (update) => {
         const { connection, lastDisconnect } = update	    
         if (connection === 'close') {
-        let reason = new Boom(lastDisconnect?.error)?.output.statusCode
+        let reason = new Boom(lastDisconnect?.error)?.output?.statusCode
             if (reason === DisconnectReason.badSession) { console.log(RazanLog(`Bad Session File, Please Delete Session and Scan Again`)); razan.logout(); }
             else if (reason === DisconnectReason.connectionClosed) { console.log(RazanLog("Connection closed, reconnecting....")); startrazan(); }
             else if (reason === DisconnectReason.connectionLost) { console.log(RazanLog("Connection Lost from Server, reconnecting...")); startrazan(); }
