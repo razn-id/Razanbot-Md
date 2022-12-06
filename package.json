@@ -58,7 +58,7 @@
     "scrape-primbon": "^1.1.0",
     "util": "^0.12.4",
     "xfarr-api": "^2.0.0",
-    "yargs": "^17.2.1",
+    "yargs": "^17.2.1"
   },
   "directories": {
     "lib": "lib",
