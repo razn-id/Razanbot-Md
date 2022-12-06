@@ -2808,7 +2808,7 @@ ${vote[from][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join("\n")}
       case "play":
       case "ytplay":
         {
-          if (!text) throw `Example : ${prefix + command} story wa anime`;
+          // if (!text) throw `Example : ${prefix + command} story wa anime`;
           let yts = require("yt-search");
           let search = await yts(text);
           let anu =
