@@ -1,8 +1,3 @@
-/**
- * RECODE BY RAZAN
- * This Script Recode From : https://github.com/AzzBott679/SC10
- */
-
 require("./config");
 const {
   BufferJSON,
@@ -122,7 +117,7 @@ module.exports = razan = async (razan, m, chatUpdate, store) => {
       .map((v) => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net")
       .includes(m.sender);
     const itsMe = m.sender == botNumber ? true : false;
-    let { text, q, url } = args.join(" ");
+    const text = q = args.join(" ")
     const sender = m.sender;
     const quoted = m.quoted ? m.quoted : m;
     const mime = (quoted.msg || quoted).mimetype || "";
@@ -2808,7 +2803,7 @@ ${vote[from][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join("\n")}
       case "play":
       case "ytplay":
         {
-          // if (!text) throw `Example : ${prefix + command} story wa anime`;
+          if (!text) throw `Example : ${prefix + command} story wa anime`;
           let yts = require("yt-search");
           let search = await yts(text);
           let anu =
@@ -2880,9 +2875,8 @@ ${vote[from][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join("\n")}
             {
               document: await getBuffer(anu.result.url),
               mimetype: "audio/mpeg",
-              fileName: `${media.title}.mp3`,
-            },
-            { quoted: m }
+              fileName: `${anu.result.title}.mp3`,
+            }
           );
         }
         break;
@@ -3998,9 +3992,9 @@ break*/
           if (!url) throw `Example : ${prefix + command} [url]`;
           m.reply(mess.wait);
           let ssan = await getBuffer(
-            `https://danzzapi.xyz/api/tools/sswebdesktop?url=${url}&apikey=danzz`
+            `https://danzzapi.xyz/api/tools/sswebdesktop?url=${text}&apikey=danzz`
           );
-          let pesan = `🌐 URLs : ${url}`;
+          let pesan = `🌐 URLs : ${text}`;
           razan.sendMessage(
             from,
             { image: ssan, caption: pesan },
@@ -4031,14 +4025,14 @@ break*/
           if (!url) throw `Example : ${prefix + command} url`;
           m.reply(mess.wait);
           let ttmp3 = await fetchJson(
-            `https://danzzapi.xyz/api/downloader/ttmp3?url=${url}&apikey=${setting.danzzkey}`
+            `https://danzzapi.xyz/api/downloader/ttmp3?url=${text}&apikey=${setting.danzzkey}`
           );
           razan.sendMessage(
             m.chat,
             {
               audio: { url: ttmp3.result.audio },
               mimetype: "audio/mpeg",
-              fileName: `${url}.mp3`,
+              fileName: `${text}.mp3`,
             },
             { quoted: m }
           );
@@ -4058,14 +4052,14 @@ break*/
           if (!url) throw `Example : ${prefix + command} [url]`;
           m.reply(mess.wait);
           let ttmp4 = await fetchJson(
-            `https://danzzapi.xyz/api/downloader/ttmp4?url=${url}&apikey=${setting.danzzkey}`
+            `https://danzzapi.xyz/api/downloader/ttmp4?url=${text}&apikey=${setting.danzzkey}`
           );
           razan.sendMessage(
             from,
             {
               video: { url: ttmp4.result.video },
               mimetype: "video/mp4",
-              fileName: `${url}.mp4`,
+              fileName: `${text}.mp4`,
               caption: `Done ~`,
             },
             { quoted: m }
@@ -4143,7 +4137,7 @@ break*/
           if (!isUrl(args[0]) && !args[0].includes("facebook.com"))
             throw "Link yang kamu berikan tidak valid";
           let fbanu = await fetchJson(
-            `https://danzzapi.xyz/api/downloader/facebook?url=${url}&apikey=${setting.danzzkey}`
+            `https://danzzapi.xyz/api/downloader/facebook?url=${text}&apikey=${setting.danzzkey}`
           );
           m.reply(mess.wait);
           let txt = `*----「 FACEBOOK MP4 」----*\n\n`;
@@ -4158,7 +4152,7 @@ break*/
             {
               video: { url: fbanu.result.links.url },
               mimetype: "video/mp4",
-              fileName: `${url}.mp4`,
+              fileName: `${text}.mp4`,
               caption: `${txt}`,
             },
             { quoted: m }
