@@ -2867,6 +2867,7 @@ ${vote[from][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join("\n")}
           //     }`,
           //     m
           //   );
+          m.reply(mess.wait)
           let anu = await fetchJson(
             `https://api.razan.my.id/api/download/ytmp3?url=${text}&apikey=APIKEY`
           );
